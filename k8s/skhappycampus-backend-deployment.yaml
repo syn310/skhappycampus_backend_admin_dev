@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skhappycampus-backend-deployment
+  labels:
+    app: skhappycampus-backend
+spec:
+  replicas: 4
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      run: skhappycampus-backend
+  template:
+    metadata: 
+      labels:
+        run: skhappycampus-backend
+    spec:
+      containers:
+      - name: skhappycampus-backend
+        image: mgmtsv-registry.cloudzcp.io/skhappycampus/skhappycampus-backend:1
+        ports: 
+        - containerPort: 8080
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "800Mi"
+            cpu: "200m"
+          limits:
+            memory: "1600Mi"
+            cpu: "400m"
