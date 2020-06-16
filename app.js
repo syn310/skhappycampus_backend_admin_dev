@@ -30,6 +30,7 @@ app.use('/applyUserStatus', require('./api/interface/applyUserStatus'));
 app.use('/applyUserCompanyStatus', require('./api/interface/applyUserCompanyStatus'));
 app.use('/notice', require('./api/interface/notice'));
 app.use('/mailTemplate', require('./api/interface/mailTemplate'));
+app.use('/book', require('./api/interface/book'));
 
 //CORS설정
 app.use(cors());
